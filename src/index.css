@@ -1,0 +1,561 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#backdrop,#backdrop2 {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  pointer-events: none;
+  display: none;
+}
+
+#backdrop.visible,#backdrop2.visible {
+  display: block;
+  pointer-events: all;
+}
+
+.modal-sheet, .modal-sheet2 {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 90%;
+  height: 10%;
+  top: 45%;
+  left: 5%;
+  background: white;
+  border-radius: 2em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.modal-card{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0em 2em 0em 2em;
+}
+
+.modal-sheet.visible, .modal-sheet2.visible {
+  display: block;
+  animation: fade-slide-in 0.3s ease-out forwards;
+}
+
+#warning-icon {
+  color: rgb(81, 66, 66);
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+#success-icon{
+  color:#2e6c36;
+  padding: 0.5em 1em 0.5em 0.5em;
+  font-size:x-large;
+}
+
+.main-header {
+  height: 10%;
+  width: auto;
+  display: flex;
+  background-color: rgba(46, 108, 54, 1);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+#header-logo {
+  height: 4em;
+  border: 0.1px white solid;
+  border-radius: 2em;
+  margin-left: 15px;
+}
+
+#header-text {
+  color: white;
+  font-family: sans-serif;
+  font-style: normal;
+  margin-bottom: 0.4em;
+}
+
+.head2 {
+  text-align: center;
+  color: white;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  font-style: normal;
+}
+
+#header-button {
+  background-color: rgba(46, 108, 54, 1);
+  border: 0;
+  color: white;
+  margin-right: 10px;
+}
+
+#headerBtn {
+  font-size: xx-large;
+}
+
+.main-flex-1,
+.main-flex-3.visible {
+  padding: 4% 1.5% 2% 1.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-input {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+}
+
+.image-input.visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  height: 100%;
+  width: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+}
+.input-preview-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:15px;
+  width: 100%;
+  height: 100%;
+}
+.input-preview-container.visible {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 90%;
+}
+
+#input-preview {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#image-icon-1 {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+#image-icon-2 {
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+.image-output {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+  position: relative;
+}
+
+.image-output.visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5%;
+  padding: 0.75%;
+  border: 1px rgba(46, 108, 54, 1) solid;
+  width: 100%;
+  color: rgba(46, 108, 54, 1);
+  border-radius: 1rem;
+  position: relative;
+}
+
+.output-preview-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 90%;
+  height: 90%;
+}
+
+#output-preview {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.main-flex-2 {
+  padding: 0.5em 1em 0.5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.main-flex-2 button {
+  width: 50%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
+  background-color: rgba(46, 108, 54, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
+}
+
+#upload {
+  display: none;
+}
+
+.main-flex-3 {
+  display: none;
+}
+
+.imageHeads {
+  color: rgba(46, 108, 54, 1);
+  text-align: start;
+  margin: 0.5em 0em 1em 0em;
+}
+
+.oL{
+  border: 4px solid #389f49;
+  border-radius: 20px;
+}
+
+#aL{
+      padding-right: 50px;
+        padding-top: 0px;
+        margin-top: 10px;
+        padding-left: 50px;
+}
+
+.attendanceHeading{
+  text-align: center;
+    padding: 1.5% 1.5% 0.5% 1.5%;
+    color: #2e7c3c;
+}
+
+.centerF{
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 10%;
+}
+.centerF button{
+  width: 40%;
+  margin: 0.5em 1em 0.5em 1em;
+  padding: 1em;
+  background-color: rgba(46, 108, 54, 1);
+  color: white;
+  border: none;
+  border-radius: 2em;
+}
+
+.image-holder{
+  position: relative;
+}
+.loader-backdrop{
+  
+  height:100vh;
+  width: 100vw;
+  position: fixed;
+  top:0;
+  left:0;
+  background-color: rgba(0, 0, 0, 0.667);
+  z-index: 100;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:hover{
+  cursor: pointer;
+}
+#start-button:disabled{
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+
+/* Style for view attendance */
+
+
+
+.style1{
+  background-color: rgba(46, 108, 54, 1); /* Blue background */
+  border: none; /* Remove borders */
+  color: white;
+  border-radius: 2.1rem;
+  padding: 0.9rem 0.9rem; /* Some padding */
+  font-size: 2rem; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:fixed;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left:2%;
+  top: 12%;
+}
+
+/* Darker background on mouse-over */
+.style1:hover {
+  scale: 1.2;
+  transition: 1s;  
+}
+
+.styleview{
+  display: flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+  justify-content:center;
+  font-size:2rem;
+  font-weight: bold;
+}
+.AttendanceList{
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.studentName1{
+  display: flex;
+  justify-content: center;
+}
+
+.studentName2{
+
+  display: flex;
+  flex-direction:column;
+  font-size: 2.7vh;
+  font-weight: bold;
+}
+
+.style2{
+  background-color: rgba(46, 108, 54, 1); /* Blue background */
+  border: none; /* Remove borders */
+  color: white;
+  border-radius: 100px;
+  margin-left: 10px;
+  padding: 12px 12px; /* Some padding */
+  font-size: 25px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:relative;
+  display: flex;
+  left: 44%;
+  bottom: 20%;
+
+}
+
+
+.style2:hover {
+  scale: 1.2;
+  transition: 1s;  
+}
+
+@media screen and (max-width: 500px) {
+  .AttendanceList{
+    font-size: 1.5rem;
+  }
+  .style1{
+    font-size: 1rem;
+  }
+  .style2{
+    font-size: 1rem;
+  }
+}
+
+
+/* dropdown */
+
+.dropdown-container {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+}
+
+.dropdown-input {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+
+/* select page */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+
+}
+
+.row{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 3vh;
+  
+}
+
+.buttonss{
+  color: white;
+  margin-top: 8vh;
+  background-color: rgba(46, 108, 54, 1);
+  border-radius: 10vh;
+  font-size: 5vh;
+  margin-right: 15vh;
+}
+
+.buttonss:hover {
+  scale: 1.1;
+  transition: 1s;  
+}
+
+.arrow{
+  color: white;
+}
+
+.text{
+  color: white;
+}
+
+
+/* Styling for table  */
+
+
+.table_heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record_table{
+  /* height: 100vh; */
+  display: grid;
+  place-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+table{
+  width:600px;  
+}
+table,td,th{
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+  text-align: center;
+}
+th{
+  background-color:rgba(46,108,54,1);
+  color:white;
+}
+
+
+
+
+/* body detail css */
+
+/* make it reset all labels when clicked reset button
+after writing longer name it should come at first letter */
+.bodyForm {
+  background-color: rgba(46, 108, 54, 1);
+}
+label {
+  width: 213px;
+  display: inline-block;
+}
+.form_elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-top: 120px;
+  margin-left: 350px;
+  margin-right: 350px;
+}
+.heading1 {
+  display: flex;
+  justify-content: center;
+}
+.submit{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  
+  
+}
+#submit{
+     
+    color: white;
+    background-color: rgba(46, 108, 54, 1);
+    font-size: 4vh;
+}
+.submit_button:hover{
+    scale: 1.1;
+   
+}
